@@ -19,7 +19,7 @@ form.addEventListener("click", (e) => {
   }
 })
 
-main.addEventListener("click",(e)=>{
+main.addEventListener("click",async(e)=>{
     e.preventDefault()
     id=e.target.getAttribute("id")
     if(e.target.classList.contains("btn-danger")){

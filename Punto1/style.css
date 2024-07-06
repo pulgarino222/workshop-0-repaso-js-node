@@ -1,0 +1,127 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor principal */
+#app {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Encabezado */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Campo de entrada de tareas */
+#new-task {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botón para añadir tarea */
+#add-task {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Añadido margen inferior para separación de la lista */
+}
+
+#add-task:hover {
+    background-color: #218838;
+}
+
+/* Lista de tareas */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Elementos de la lista */
+#task-list li {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botón para eliminar tarea */
+.delete-task {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.delete-task:hover {
+    background-color: #c82333;
+}
+
+/* Botón para editar tarea */
+.edit-task {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.edit-task:hover {
+    background-color: #e0a800;
+}
+
+/* Botón para marcar tarea como completada */
+.complete-task {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.complete-task:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para tareas completadas */
+.completed span {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* Estilo para los botones dentro del elemento li */
+#task-list li button {
+    margin-left: 5px;
+}
