@@ -7,13 +7,39 @@ let form = document.querySelector("#form")
 let imageTask = document.querySelector("#image")
 let nameTask = document.querySelector("#nameTask")
 let descriptionTask = document.querySelector("#description")
-
+let button=document.querySelector("#button")
 let main = document.querySelector("#main")
-
-btn.addEventListener("click", (e) => {
+let id
+form.addEventListener("click", (e) => {
   e.preventDefault()
-  console.log('hola');
+  if(e.target.classList.contains("btn-success")){
+    newData()
+  }else if(e.target.classList.contains("btn-warning")){
+    editData(id)
+  }
 })
+
+main.addEventListener("click",(e)=>{
+    e.preventDefault()
+    id=e.target.getAttribute("id")
+    if(e.target.classList.contains("btn-danger")){
+      alert("vas a eliminar la tarea")
+    }else if(e.target.classList.contains("btn-warning")){
+      alert("vas a editar la tarea")
+      writeValues(id)
+      button.classList.replace("btn-success", "btn-warning")
+      button.textContent=`actualizar`
+
+    }else if(e.target.classList.contains("btn-danger")){
+      alert("vas a eliminar")
+      del(id)
+    }
+
+})
+
+
+
+
 
 
 let index = async (main, url) => {
@@ -49,7 +75,7 @@ index(main, url)
 
 
 //this function inner a new information in the database 
-async function newData(nameTask, descriptionTask, imageTask) {
+async function newData() {
   let newobject = {
     nameTask: nameTask.value,
     description: descriptionTask.value,
@@ -63,10 +89,45 @@ async function newData(nameTask, descriptionTask, imageTask) {
     },
     body: JSON.stringify(newobject)
   })
+  location.reload()
+}
+
+async function editData(id) {
+  let updatedObject = {
+    nameTask: nameTask.value,
+    description: descriptionTask.value,
+    image: imageTask.value,
+    complete: false
+  };
+  await fetch(`${url}/${id}`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedObject)
+  });
+  
 }
 
 
+async function writeValues(id){
+  const data = await fetch(`${url}/${id}`)
+  const dataReel = await data.json()
+  nameTask.value = dataReel.nameTask
+  descriptionTask.value = dataReel.description
+  imageTask.value = dataReel.image
 
+}
+
+async function del(id){
+  await fetch(`${url}/${id}`, { 
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
+      }
+  })
+  location.reload()
+}
 
 
 
