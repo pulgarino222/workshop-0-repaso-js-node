@@ -10,6 +10,8 @@ let descriptionTask = document.querySelector("#description")
 let button=document.querySelector("#button")
 let main = document.querySelector("#main")
 let id
+
+
 form.addEventListener("click", (e) => {
   e.preventDefault()
   if(e.target.classList.contains("btn-success")){
@@ -24,15 +26,13 @@ main.addEventListener("click",async(e)=>{
     id=e.target.getAttribute("id")
     if(e.target.classList.contains("btn-danger")){
       alert("vas a eliminar la tarea")
+      del(id)
     }else if(e.target.classList.contains("btn-warning")){
       alert("vas a editar la tarea")
       writeValues(id)
       button.classList.replace("btn-success", "btn-warning")
       button.textContent=`actualizar`
 
-    }else if(e.target.classList.contains("btn-danger")){
-      alert("vas a eliminar")
-      del(id)
     }
 
 })
@@ -106,6 +106,7 @@ async function editData(id) {
       },
       body: JSON.stringify(updatedObject)
   });
+  location.reload()
   
 }
 
